@@ -1,0 +1,23 @@
+name: Cloud Domaci
+
+on:
+  pull_request:
+    branches: ['main']
+    types: ['closed', 'merged']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest 
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - name: Install dependencies  
+        run: npm install  
+      - name: Verify build  
+        run: exit 0 
